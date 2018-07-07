@@ -25,7 +25,9 @@ SECRET_KEY = 'jd_$6d6s6%5u(&@d9)kiau!=8l9)@b&ha-%uoefku31f%e2)z-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.50.122'
+]
 
 
 # Application definition
