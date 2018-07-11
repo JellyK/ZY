@@ -26,7 +26,7 @@ SECRET_KEY = 'jd_$6d6s6%5u(&@d9)kiau!=8l9)@b&ha-%uoefku31f%e2)z-'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.50.122'
+    '192.168.50.122',
 ]
 
 
@@ -75,10 +75,25 @@ WSGI_APPLICATION = 'ZhuangYou.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+#sqlite
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'NAME': 'zhuangyou',
+        'USER': 'user',
+        'PASSWORD': 'passw0rd',
+        # 'OPTIONS': {
+        #     'init_command': "SET sql_mode=='STRICT_TRANS_TABLES'"
+        # },
     }
 }
 
@@ -101,6 +116,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
