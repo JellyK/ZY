@@ -5,6 +5,7 @@ import requests
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
 import random,string
+import time
 
 APP_ID = 'wxae99ab29ecc93d7c'
 APP_SECRET = '4f9aa6b044ca2c610ce388a63ea2e8e1'
@@ -20,6 +21,9 @@ WX_GET_SESSION_PARAMS = {
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
+session_key = ''
+openid = ''
+
 def login(request):
     code = request.GET.get('code')
     errMsg = request.GET.get('errMsg')
@@ -29,6 +33,7 @@ def login(request):
         print('login error')
         return HttpResponse('login error')
 
+    start = time.time()
     #request session_key and openid
     WX_GET_SESSION_PARAMS['js_code'] = code
     res = requests.get(WX_GET_SESSION_URL, params=WX_GET_SESSION_PARAMS)
@@ -40,20 +45,36 @@ def login(request):
     openid = j['openid']
     print('session_key:' + session_key)
     print('openid:' + openid)
+    print('time:{}'.format(time.time() - start))
 
+    start = time.time()
     #create and add user into db
-    user = User.objects.create_user(openid, password=random_password())
+    # print('filter: {}'.format(dir(User.objects)))
+    # userlist = User.objects.all()
+    userlist = User.objects.filter(username=openid)
+    if userlist.count() == 0:
+        user = User.objects.create_user(openid, password=random_password())
+    else:
+        user = userlist[0]
+    print(user)
+    print('time2:{}'.format(time.time() - start))
 
     #create jwt by user
     payload = jwt_payload_handler(user)
     token = jwt_encode_handler(payload)
     print('token:' + token)
+    return HttpResponse('login successfully')
 
-# def user(request):
-#     data = request.GET.
-#     crypt = WXBizDataCrypt(APP_ID, session_key)
-#     print('crypt:' + crypt.__str__())
-#     return HttpResponse("hello world")
+def user(request):
+    # data = request.GET.
+    print(request.method)
+    if request.method == 'GET':
+        print('rawData' + request.GET.get('rawData'))
+    elif request.method == 'POST':
+        print('rawData' + request.POST.get('rawData'))
+    crypt = WXBizDataCrypt(APP_ID, session_key)
+    print('crypt:' + crypt.__str__())
+    return HttpResponse("hello world")
 
 def random_password():
     src = string.ascii_letters + string.digits

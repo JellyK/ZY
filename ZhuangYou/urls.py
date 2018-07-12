@@ -19,6 +19,9 @@ from django.conf.urls import url
 from . import login
 
 urlpatterns = [
-    url(r'^login$', login.login),
+    # url(r'^login$', login.login),
+    # path('user/', login.user),
+    path('^login$', wxUser.views.login),
+
     path('admin/', admin.site.urls),
 ]
