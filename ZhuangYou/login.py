@@ -49,14 +49,13 @@ def login(request):
 
     start = time.time()
     #create and add user into db
-    # print('filter: {}'.format(dir(User.objects)))
-    # userlist = User.objects.all()
     userlist = User.objects.filter(username=openid)
     if userlist.count() == 0:
         user = User.objects.create_user(openid, password=random_password())
     else:
         user = userlist[0]
     print(user)
+
     print('time2:{}'.format(time.time() - start))
 
     #create jwt by user

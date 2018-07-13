@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
+from django.conf.urls import include, url
 from . import login
+import wxUser
 
 urlpatterns = [
     # url(r'^login$', login.login),
     # path('user/', login.user),
-    path('^login$', wxUser.views.login),
-
+    path('wxUser/', include('wxUser.urls')),
     path('admin/', admin.site.urls),
 ]

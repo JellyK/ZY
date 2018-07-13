@@ -1,10 +1,13 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from .models import UserAccess
+from rest_framework_jwt.settings import api_settings
+from django.contrib.auth.models import User
 from weixin import WXAPPAPI
 from weixin.lib.wxcrypt import WXBizDataCrypt
 import requests
-from rest_framework_jwt.settings import api_settings
-from django.contrib.auth.models import User
-import random,string
+
+import random
+import string
 import time
 
 APP_ID = 'wxae99ab29ecc93d7c'
@@ -25,6 +28,7 @@ session_key = ''
 openid = ''
 
 def login(request):
+    global session_key, openid
     code = request.GET.get('code')
     errMsg = request.GET.get('errMsg')
     print(code)
@@ -48,32 +52,46 @@ def login(request):
     print('time:{}'.format(time.time() - start))
 
     start = time.time()
-    #create and add user into db
-    # print('filter: {}'.format(dir(User.objects)))
-    # userlist = User.objects.all()
-    userlist = User.objects.filter(username=openid)
+    # check user is in UserAccess db or not
+    userlist = UserAccess.objects.filter(username=openid)
     if userlist.count() == 0:
-        user = User.objects.create_user(openid, password=random_password())
+        # if there is no user info in db, create it
+        auth_user = User.objects.create_user(openid, password=random_password())
+        user_access = UserAccess.objects.create(username=openid)
     else:
-        user = userlist[0]
-    print(user)
+        user_access = userlist[0]
     print('time2:{}'.format(time.time() - start))
 
+    #check session_key is
     #create jwt by user
     payload = jwt_payload_handler(user)
     token = jwt_encode_handler(payload)
+    user_access.session_key = session_key
+    user_access.token = token
+    user_access.save()
     print('token:' + token)
-    return HttpResponse('login successfully')
+    return JsonResponse({'login': 'ok',
+                         'token': token})
 
 def user(request):
-    # data = request.GET.
+    # use POST
     print(request.method)
-    if request.method == 'GET':
-        print('rawData' + request.GET.get('rawData'))
-    elif request.method == 'POST':
-        print('rawData' + request.POST.get('rawData'))
+    print(request.POST)
+    errMsg = request.POST.get('errMsg')
+    if errMsg != 'getUserInfo:ok':
+        return HttpResponse('failed to getUserInfo')
+    rawData = request.POST.get('rawData')
+    signature = request.POST.get('signature')
+    encryptedData = request.POST.get('encryptedData')
+    iv = request.POST.get('iv')
+    print(rawData)
+    print(signature)
+    print(encryptedData)
+    print(iv)
+
     crypt = WXBizDataCrypt(APP_ID, session_key)
-    print('crypt:' + crypt.__str__())
+    userInfo = crypt.decrypt(encryptedData, iv)
+    print(userInfo)
     return HttpResponse("hello world")
 
 def random_password():

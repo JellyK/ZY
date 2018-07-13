@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class WxuserConfig(AppConfig):
+class WxUserConfig(AppConfig):
     name = 'wxUser'
