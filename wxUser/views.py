@@ -24,18 +24,21 @@ WX_GET_SESSION_PARAMS = {
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-session_key = ''
-openid = ''
+# session_key = ''
+# openid = ''
 
 def login(request):
-    global session_key, openid
+    #url login is get user's session_key and openid and create User and UserAccess info
+    # global session_key, openid
     code = request.GET.get('code')
     errMsg = request.GET.get('errMsg')
     print(code)
     print(errMsg)
     if not errMsg == 'login:ok':
         print('login error')
-        return HttpResponse('login error')
+        return JsonResponse({'path': '/login',
+                         'status': 'error',
+                         'reason': errMsg})
 
     start = time.time()
     #request session_key and openid
@@ -51,30 +54,37 @@ def login(request):
     print('openid:' + openid)
     print('time:{}'.format(time.time() - start))
 
+    # openid = '111'
     start = time.time()
-    # check user is in UserAccess db or not
-    userlist = UserAccess.objects.filter(username=openid)
-    if userlist.count() == 0:
-        # if there is no user info in db, create it
-        auth_user = User.objects.create_user(openid, password=random_password())
-        user_access = UserAccess.objects.create(username=openid)
-    else:
-        user_access = userlist[0]
-    print('time2:{}'.format(time.time() - start))
 
-    #check session_key is
-    #create jwt by user
-    payload = jwt_payload_handler(user)
-    token = jwt_encode_handler(payload)
-    user_access.session_key = session_key
-    user_access.token = token
-    user_access.save()
+    userlist = User.objects.filter(username=openid)
+    if userlist.count() == 0:
+        # if there is no user info in table auth_user, create it
+        user = User.objects.create_user(openid, password=User.objects.make_random_password())
+    else:
+        user = userlist[0]
+    # if there is no user info in table user_access, create it
+    user_access = UserAccess.objects.get_or_create(username=openid)
+
+    #check session_key is same as it in userAccess or not
+    if not user_access.session_key or session_key != user_access.session_key:
+        #create jwt by user
+        payload = jwt_payload_handler(user)
+        token = jwt_encode_handler(payload)
+        user_access.session_key = session_key
+        user_access.token = token
+        user_access.save()
+    else:
+        token = user_access.token
     print('token:' + token)
-    return JsonResponse({'login': 'ok',
+    print('time2:{}'.format(time.time() - start))
+    return JsonResponse({'path': '/login',
+                         'status': 'ok',
                          'token': token})
 
 def user(request):
     # use POST
+    #url user is get the user's wxUserInfo, and
     print(request.method)
     print(request.POST)
     errMsg = request.POST.get('errMsg')
@@ -84,15 +94,25 @@ def user(request):
     signature = request.POST.get('signature')
     encryptedData = request.POST.get('encryptedData')
     iv = request.POST.get('iv')
-    print(rawData)
-    print(signature)
-    print(encryptedData)
-    print(iv)
+    token = request.POST.get('token')
+    print('rawData: ' + rawData)
+    print('signature: ' + signature)
+    print('encryptedData: ' + encryptedData)
+    print('iv: ' + iv)
+    print('token: ' + token)
+    try:
+        session_key = UserAccess.objects.get(token=token)
+    except UserAccess.objects.model.DoesNotExist:
+        return JsonResponse({'path': '/user',
+                             'status': 'error',
+                             'reason': 'lack of token'})
 
     crypt = WXBizDataCrypt(APP_ID, session_key)
     userInfo = crypt.decrypt(encryptedData, iv)
     print(userInfo)
-    return HttpResponse("hello world")
+    return JsonResponse({'path': '/user',
+                         'status': 'ok',
+                         })
 
 def random_password():
     src = string.ascii_letters + string.digits
