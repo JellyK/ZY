@@ -64,10 +64,11 @@ def login(request):
     else:
         user = userlist[0]
     # if there is no user info in table user_access, create it
-    user_access = UserAccess.objects.get_or_create(username=openid)
+    user_access, is_created = UserAccess.objects.get_or_create(username=openid)
+    print(user_access)
 
     #check session_key is same as it in userAccess or not
-    if not user_access.session_key or session_key != user_access.session_key:
+    if is_created or session_key != user_access.session_key:
         #create jwt by user
         payload = jwt_payload_handler(user)
         token = jwt_encode_handler(payload)
