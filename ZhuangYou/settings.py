@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'wxUser.apps.WxUserConfig',
-    'charge.apps.ChargeConfig',
+    'charger.apps.ChargerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,7 +94,7 @@ DATABASES = {
 }
 
 FIXTURE_DIRS = [
-    '../charge/fixtures/',
+    '../charger/fixtures/',
 ]
 
 # Password validation
