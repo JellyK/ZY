@@ -3,7 +3,7 @@ from django.db import models
 
 class TeslaCharger(models.Model):
     location_id = models.CharField(max_length=64, unique=True, blank=False, default='')
-    location_type = models.CharField(max_length=64, blank=False)
+    location_type = models.CharField(max_length=128, blank=False)
     open_soon = models.SmallIntegerField()
     latitude = models.FloatField(blank=False)
     longitude = models.FloatField(blank=False)

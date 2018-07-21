@@ -102,13 +102,14 @@ def user(request):
     print('iv: ' + iv)
     print('token: ' + token)
     try:
-        session_key = UserAccess.objects.get(token=token)
+        user_access = UserAccess.objects.get(token=token)
+        print('testtest:' + user_access.username)
     except UserAccess.objects.model.DoesNotExist:
         return JsonResponse({'path': '/user',
                              'status': 'error',
                              'reason': 'lack of token'})
 
-    crypt = WXBizDataCrypt(APP_ID, session_key)
+    crypt = WXBizDataCrypt(APP_ID, user_access.session_key)
     userInfo = crypt.decrypt(encryptedData, iv)
     print(userInfo)
     return JsonResponse({'path': '/user',

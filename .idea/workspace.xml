@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49be9a16-991c-4140-8337-10f4afe4dcf0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/charger/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charger/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charger/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZhuangYou/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZhuangYou/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/fixtures/echargenet.txt" beforeDir="false" afterPath="$PROJECT_DIR$/charger/fixtures/echargenet.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/fixtures/echargenet_third.txt" beforeDir="false" afterPath="$PROJECT_DIR$/charger/fixtures/echargenet_third.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/fixtures/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/fixtures/transform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charge/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/charger/fixtures/echargenet.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/charger/migrations/0002_auto_20180716_0849.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wxUser/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wxUser/migrations/0002_auto_20180716_0805.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wxUser/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/wxUser/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZhuangYou/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZhuangYou/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charger/fixtures/ECharger.json" beforeDir="false" afterPath="$PROJECT_DIR$/charger/fixtures/ECharger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charger/fixtures/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/fixtures/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charger/fixtures/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/fixtures/transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charger/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charger/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/charger/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wxUser/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/wxUser/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,76 +29,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python3.6/dist-packages/django/db/migrations/operations/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wxUser/tests.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/charger/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+            <state relative-caret-position="390">
+              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZhuangYou/db.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/charger/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="57" column="36" selection-start-line="24" selection-start-column="4" selection-end-line="57" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZhuangYou/login.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+            <state relative-caret-position="255">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZhuangYou/settings.py">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZhuangYou/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="150">
+              <caret line="10" column="71" lean-forward="true" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
               <folding>
-                <element signature="e#22#31#0" expanded="true" />
+                <element signature="e#633#665#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/charger/apps.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wxUser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="147">
+              <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,8 +113,6 @@
         <option value="$PROJECT_DIR$/wxUser/apps.py" />
         <option value="$PROJECT_DIR$/wxUser/urls.py" />
         <option value="$PROJECT_DIR$/ZhuangYou/login.py" />
-        <option value="$PROJECT_DIR$/wxUser/views.py" />
-        <option value="$PROJECT_DIR$/ZhuangYou/urls.py" />
         <option value="$PROJECT_DIR$/charge/urls.py" />
         <option value="$PROJECT_DIR$/charge/models.py" />
         <option value="$PROJECT_DIR$/charge/views.py" />
@@ -159,16 +120,18 @@
         <option value="$PROJECT_DIR$/charge/migrations/0002_auto_20180716_0849.py" />
         <option value="$PROJECT_DIR$/wxUser/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/charge/fixtures/transform.py" />
-        <option value="$PROJECT_DIR$/charger/views.py" />
         <option value="$PROJECT_DIR$/ZhuangYou/settings.py" />
         <option value="$PROJECT_DIR$/wxUser/models.py" />
         <option value="$PROJECT_DIR$/charger/models.py" />
+        <option value="$PROJECT_DIR$/wxUser/views.py" />
+        <option value="$PROJECT_DIR$/ZhuangYou/urls.py" />
+        <option value="$PROJECT_DIR$/charger/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="756" />
-    <option name="y" value="24" />
+    <option name="x" value="417" />
+    <option name="y" value="444" />
     <option name="width" value="1400" />
     <option name="height" value="915" />
   </component>
@@ -209,19 +172,7 @@
             <path>
               <item name="ZhuangYou" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZhuangYou" type="462c0819:PsiDirectoryNode" />
-              <item name="charger" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZhuangYou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZhuangYou" type="462c0819:PsiDirectoryNode" />
               <item name="wxUser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZhuangYou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZhuangYou" type="462c0819:PsiDirectoryNode" />
-              <item name="wxUser" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ZhuangYou" type="b2602c69:ProjectViewProjectNode" />
@@ -310,17 +261,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="756" y="24" width="1400" height="915" extended-state="0" />
+    <frame x="417" y="444" width="1400" height="915" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49861112" visible="true" weight="0.21787296" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.17146145" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32911393" />
-      <window_info anchor="right" id="Structure" order="3" sideWeight="0.5013889" side_tool="true" visible="true" weight="0.20605613" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="right" id="Structure" order="3" sideWeight="0.5013889" side_tool="true" visible="true" weight="0.15583457" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -336,23 +287,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/lib/python3.6/string.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.6/dist-packages/rest_framework_jwt/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///usr/local/lib/python3.6/dist-packages/django/urls/conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.6/dist-packages/django/contrib/admin/sites.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -489,25 +423,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wxUser/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="121" column="28" selection-start-line="121" selection-start-column="28" selection-end-line="121" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZhuangYou/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/user.md">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZhuangYou/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/charger/migrations/0002_auto_20180716_0849.py" />
     <entry file="file://$PROJECT_DIR$/wxUser/migrations/0001_initial.py">
@@ -526,20 +446,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ZhuangYou/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/charger/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/charger/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/charger/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -618,6 +524,15 @@
     <entry file="file://$PROJECT_DIR$/wxUser/migrations/0002_auto_20180720_1043.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/charger/migrations/0007_auto_20180721_0212.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charger/migrations/0006_auto_20180720_1107.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charger/migrations/0005_auto_20180720_1059.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/ZhuangYou/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -642,10 +557,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wxUser/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charger/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/charger/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+        <state relative-caret-position="390">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZhuangYou/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="71" lean-forward="true" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
+          <folding>
+            <element signature="e#633#665#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charger/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

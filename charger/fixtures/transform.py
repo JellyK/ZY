@@ -10,7 +10,7 @@ def transform(inpath, outpath):
             for i, j in enumerate(jArray):
                 new_j = dict()
                 if 'id' in j:
-                    j['chargeId'] = j['id']
+                    j['chargerId'] = j['id']
                     del j['id']
                 new_j['fields'] = j
                 new_j['model'] = "charger.{}".format(os.path.basename(outpath).split('.')[0])

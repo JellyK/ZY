@@ -23,5 +23,6 @@ urlpatterns = [
     # url(r'^login$', login.login),
     # path('user/', login.user),
     path('wxUser/', include('wxUser.urls')),
+    path('charger/', include('charger.urls')),
     path('admin/', admin.site.urls),
 ]
