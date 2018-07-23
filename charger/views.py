@@ -7,7 +7,7 @@ def charger(request):
     chargerId = request.GET.get('id')
     chargerType = request.GET.get('type')
     j = dict()
-    if chargerType == 'teslaCharger':
+    if chargerType.startswith('tesla') and chargerType.endswith('Charger'):
         try:
             teslaCharger = TeslaCharger.objects.get(location_id=chargerId)
         except teslaCharger.objects.model.DoesNotExist:
