@@ -25,12 +25,25 @@ def charger(request):
         j['longitude'] = teslaCharger.longitude
     elif chargerType == 'eCharger':
         try:
-            eCharger = EChargerInfo.objects.get(chargerId=chargerId)
+            eCharger = ECharger.objects.get(chargerId=chargerId)
+            eChargerInfo = EChargerInfo.objects.get(chargerId=chargerId)
         except EChargerInfo.objects.model.DoesNotExist:
             return JsonResponse({'path': '/charger',
                                  'status': 'error',
                                  'reason': 'no this charger'})
-        j['name'] = eCharger.name
+        except EChargerInfo.objects.model.DoesNotExist:
+            return JsonResponse({'path': '/charger',
+                                 'status': 'error',
+                                 'reason': 'no this charger'})
+        j['name'] = eChargerInfo.name
+        j['latitude'] = eCharger.lat
+        j['longitude'] = eCharger.lng
+        j['operator'] = eChargerInfo.operatorName
+        j['acNum'] = json.loads(eChargerInfo.chargerTypeNum.replace('\'', '\"'))['1']
+        j['dcNum'] = json.loads(eChargerInfo.chargerTypeNum.replace('\'', '\"'))['2']
+        j['businessTime'] = eChargerInfo.businessTime
+        j['electricizePrice'] = eChargerInfo.electricizePrice
+        j['parkingPrice'] =eChargerInfo.priceParking
 
     return JsonResponse({
         'path': '/charger',
