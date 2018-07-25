@@ -51,3 +51,26 @@ class ECharger(models.Model):
 
     # class Meta:
     #     db_table = 'echarger'
+
+
+class EChargerInfo(models.Model):
+    # chargerId = models.CharField(max_length=64, unique=True, blank=False, default='')
+    chargerId = models.OneToOneField(ECharger,
+                                     to_field='chargerId',
+                                     on_delete=models.CASCADE,
+                                     max_length=64,
+                                     unique=True,
+                                     blank=False,
+                                     default='')
+    company = models.CharField(max_length=128)
+    name = models.CharField(max_length=128)
+    businessTime = models.CharField(max_length=32)
+    electricizePrice = models.CharField(max_length=64)
+    quantity = models.SmallIntegerField()
+    operatorName = models.CharField(max_length=16)
+    priceParking = models.CharField(max_length=32)
+    chargerTypeNum = models.CharField(max_length=32)
+    chargerTypeStatusDes = models.CharField(max_length=32)
+    servicecode = models.SmallIntegerField()
+    payTypeDesc = models.CharField(max_length=32)
+    totalFreeChargerNum = models.SmallIntegerField()

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ECharger, TeslaCharger
+from .models import ECharger, EChargerInfo, TeslaCharger
 from django.http import JsonResponse
 import json
 
@@ -10,7 +10,7 @@ def charger(request):
     if chargerType.startswith('tesla') and chargerType.endswith('Charger'):
         try:
             teslaCharger = TeslaCharger.objects.get(location_id=chargerId)
-        except teslaCharger.objects.model.DoesNotExist:
+        except TeslaCharger.objects.model.DoesNotExist:
             return JsonResponse({'path': '/charger',
                                  'status': 'error',
                                  'reason': 'no this charger'})
@@ -24,7 +24,13 @@ def charger(request):
         j['latitude'] = teslaCharger.latitude
         j['longitude'] = teslaCharger.longitude
     elif chargerType == 'eCharger':
-        pass
+        try:
+            eCharger = EChargerInfo.objects.get(chargerId=chargerId)
+        except EChargerInfo.objects.model.DoesNotExist:
+            return JsonResponse({'path': '/charger',
+                                 'status': 'error',
+                                 'reason': 'no this charger'})
+        j['name'] = eCharger.name
 
     return JsonResponse({
         'path': '/charger',
@@ -39,8 +45,12 @@ def collect(request):
 
 def teslaChargers(request):
     print('---------------------tesla')
-    chargers = TeslaCharger.objects.all().values('location_id', 'latitude', 'longitude', 'title')
-    jArray = makeJsonArray(chargers, 'location_id', 'latitude', 'longitude', 'title')
+    chargers = TeslaCharger.objects.all().values('location_id',
+                                                 'latitude',
+                                                 'longitude',
+                                                 'title',
+                                                 'open_soon')
+    jArray = makeJsonArray(chargers, 'location_id', 'latitude', 'longitude', 'title', judge='open_soon')
     print(jArray)
     return JsonResponse({
         'path': '/teslaChargers',
@@ -55,7 +65,8 @@ def teslaSuperChargers(request):
                                                  'location_type',
                                                  'latitude',
                                                  'longitude',
-                                                 'title')
+                                                 'title',
+                                                 'open_soon')
     jArray = makeTeslaJsonArray(chargers, 'supercharger')
     return JsonResponse({
         'path': '/teslaSuperChargers',
@@ -70,7 +81,8 @@ def teslaDestinationChargers(request):
                                                  'location_type',
                                                  'latitude',
                                                  'longitude',
-                                                 'title')
+                                                 'title',
+                                                 'open_soon')
     jArray = makeTeslaJsonArray(chargers, 'destination charger')
     return JsonResponse({
         'path': '/teslaDestinationChargers',
@@ -81,8 +93,8 @@ def teslaDestinationChargers(request):
 
 def eChargers(request):
     print('--------------------e')
-    chargers = ECharger.objects.all().values('chargerId', 'lat', 'lng', 'company')
-    jArray = makeJsonArray(chargers, 'chargerId', 'lat', 'lng', 'company')
+    chargers = ECharger.objects.all().values('chargerId', 'lat', 'lng', 'company', 'isGs')
+    jArray = makeJsonArray(chargers, 'chargerId', 'lat', 'lng', 'company', judge='isGs')
     return JsonResponse({
         'path': '/eChargers',
         'status': 'ok',
@@ -90,23 +102,29 @@ def eChargers(request):
     })
 
 
-def makeJsonArray(chargers, location_id, latitude, longitude, title):
+def makeJsonArray(chargers, location_id, latitude, longitude, title, judge=None):
     jArray = []
     for charger in chargers:
-        jArray.append({
+        j = {
             # 'id': charger['id'],
             'location_id': charger[location_id],
             'latitude': charger[latitude],
             'longitude': charger[longitude],
             'title': charger[title]
-        })
+        }
+        if judge != None:
+            if judge == 'isGs' and charger[judge] == 0:
+                continue
+            elif judge == 'open_soon' and charger[judge] == 1:
+                continue
+        jArray.append(j)
     return jArray
 
 
 def makeTeslaJsonArray(chargers, chargerType):
     jArray = []
     for charger in chargers:
-        if chargerType in charger['location_type']:
+        if chargerType in charger['location_type'] and charger['open_soon'] == 0:
             jArray.append({
                 # 'id': charger['id'],
                 'location_id': charger['location_id'],
