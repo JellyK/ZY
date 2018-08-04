@@ -13,9 +13,16 @@ class UserAccess(models.Model):
 
 class UserInfo(models.Model):
     username = models.CharField(max_length=150, unique=True, blank=False)
-    car_type = models.CharField(max_length=1024)
+    avatorUrl = models.CharField(max_length=128)
+    nickName = models.CharField(max_length=64)
+    gender = models.SmallIntegerField()
+    city = models.CharField(max_length=32)
+    province = models.CharField(max_length=32)
+    country = models.CharField(max_length=32)
+    car_type = models.CharField(max_length=64)
     road_book = models.CharField(max_length=1024)
     charger = models.CharField(max_length=1024)
+    comment = models.CharField(max_length=1024)
 
     # class Meta:
     #     db_table = 'userinfo'

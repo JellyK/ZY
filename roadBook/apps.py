@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class RoadbookConfig(AppConfig):
+class RoadBookConfig(AppConfig):
     name = 'roadBook'

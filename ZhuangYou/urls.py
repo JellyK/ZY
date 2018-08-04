@@ -24,5 +24,7 @@ urlpatterns = [
     # path('user/', login.user),
     path('wxUser/', include('wxUser.urls')),
     path('charger/', include('charger.urls')),
+    path('roadBook/', include('roadBook.urls')),
     path('admin/', admin.site.urls),
+
 ]

@@ -89,7 +89,7 @@ def user(request):
     print(request.method)
     print(request.POST)
     errMsg = request.POST.get('errMsg')
-    print()
+    print(errMsg)
     if errMsg != 'getUserInfo:ok':
         return HttpResponse('failed to getUserInfo')
     rawData = request.POST.get('rawData')

@@ -36,6 +36,8 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'wxUser.apps.WxUserConfig',
     'charger.apps.ChargerConfig',
+    'roadBook.apps.RoadBookConfig',
+    'comment.apps.CommentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
