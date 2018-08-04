@@ -20,5 +20,6 @@ def transform(inpath, outpath):
         fp.write(json.dumps(new_jArray, ensure_ascii=False))
 
 if __name__ == '__main__':
-    transform(['echargenet.txt', 'echargenet_third.txt'], 'ECharger.json')
+    transform(['echargerinfo.txt'], 'EChargerInfo.json')
+    # transform(['echargenet.txt', 'echargenet_third.txt'], 'ECharger.json')
     #transform(['teslacharger.txt'], 'TeslaCharger.json')

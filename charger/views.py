@@ -43,7 +43,7 @@ def charger(request):
         j['dcNum'] = json.loads(eChargerInfo.chargerTypeNum.replace('\'', '\"'))['2']
         j['businessTime'] = eChargerInfo.businessTime
         j['electricizePrice'] = eChargerInfo.electricizePrice
-        j['parkingPrice'] =eChargerInfo.priceParking
+        j['parkingPrice'] = eChargerInfo.priceParking
 
     return JsonResponse({
         'path': '/charger',
