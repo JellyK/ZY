@@ -1,14 +1,15 @@
 from django.http import HttpResponse, JsonResponse
-from .models import UserAccess
+from .models import UserAccess, UserInfo
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
-from weixin import WXAPPAPI
-from weixin.lib.wxcrypt import WXBizDataCrypt
+# from weixin import WXAPPAPI
+# from weixin.lib.wxcrypt import WXBizDataCrypt
 import requests
 
 import random
 import string
 import time
+import json
 
 APP_ID = 'wxae99ab29ecc93d7c'
 APP_SECRET = '4f9aa6b044ca2c610ce388a63ea2e8e1'
@@ -102,17 +103,35 @@ def user(request):
     print('encryptedData: ' + encryptedData)
     print('iv: ' + iv)
     print('token: ' + token)
+
+    rawData = json.loads(rawData)
     try:
         user_access = UserAccess.objects.get(token=token)
         print('testtest:' + user_access.username)
     except UserAccess.objects.model.DoesNotExist:
         return JsonResponse({'path': '/user',
                              'status': 'error',
-                             'reason': 'lack of token'})
+                             'reason': 'token is error'})
 
-    crypt = WXBizDataCrypt(APP_ID, user_access.session_key)
-    userInfo = crypt.decrypt(encryptedData, iv)
-    print(userInfo)
+    user_info, is_created = UserInfo.objects.get_or_create(username=user_access.username)
+    if user_info.avatarUrl != rawData['avatarUrl']:
+        user_info.avatarUrl = rawData['avatarUrl']
+    if user_info.city != rawData['city']:
+        user_info.city = rawData['city']
+    if user_info.country != rawData['country']:
+        user_info.country = rawData['country']
+    if user_info.gender != rawData['gender']:
+        user_info.gender = rawData['gender']
+    if user_info.nickName != rawData['nickName']:
+        user_info.nickName = rawData['nickName']
+    if user_info.province != rawData['province']:
+        user_info.province = rawData['province']
+    user_info.save()
+
+
+    # crypt = WXBizDataCrypt(APP_ID, user_access.session_key)
+    # userInfo = crypt.decrypt(encryptedData, iv)
+    # print(userInfo)
     return JsonResponse({'path': '/user',
                          'status': 'ok',
                          })

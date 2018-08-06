@@ -12,4 +12,4 @@ class RoadBook(models.Model):
                                      on_delete=models.CASCADE,
                                      max_length=150)
     createTime = models.TimeField(auto_now_add=True)
-    collectedCount = models.IntegerField()
+    collectedCount = models.IntegerField(default=0)

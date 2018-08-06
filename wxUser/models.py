@@ -13,16 +13,20 @@ class UserAccess(models.Model):
 
 class UserInfo(models.Model):
     username = models.CharField(max_length=150, unique=True, blank=False)
-    avatorUrl = models.CharField(max_length=128)
-    nickName = models.CharField(max_length=64)
-    gender = models.SmallIntegerField()
-    city = models.CharField(max_length=32)
-    province = models.CharField(max_length=32)
-    country = models.CharField(max_length=32)
+    avatarUrl = models.CharField(max_length=128, default='')
+    nickName = models.CharField(max_length=64, default='')
+    gender = models.SmallIntegerField(default=0)
+    city = models.CharField(max_length=32, default='')
+    province = models.CharField(max_length=32, default='')
+    country = models.CharField(max_length=32, default='')
     car_type = models.CharField(max_length=64)
-    road_book = models.CharField(max_length=1024)
-    charger = models.CharField(max_length=1024)
-    comment = models.CharField(max_length=1024)
+    '''
+    road_book 记录了用户的所有完成，未完成和收藏的路书，以json格式
+    {"id": roadBook_id, "completed": 1, "collected": 1, "commented": 1}作为数据，其中
+    '''
+    road_book = models.CharField(max_length=1024, default='[]')
+    charger = models.CharField(max_length=1024, default='[]')
+    comment = models.CharField(max_length=1024, default='[]')
 
     # class Meta:
     #     db_table = 'userinfo'
