@@ -24,9 +24,9 @@ class UserInfo(models.Model):
     road_book 记录了用户的所有完成，未完成和收藏的路书，以json格式
     {"id": roadBook_id, "completed": 1, "collected": 1, "commented": 1}作为数据，其中
     '''
-    road_book = models.CharField(max_length=1024, default='[]')
-    charger = models.CharField(max_length=1024, default='[]')
-    comment = models.CharField(max_length=1024, default='[]')
+    road_book = models.TextField(max_length=65536, default='[]')
+    charger = models.TextField(max_length=65536, default='[]')
+    comment = models.TextField(max_length=65536, default='[]')
 
     # class Meta:
     #     db_table = 'userinfo'

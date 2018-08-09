@@ -8,7 +8,8 @@ import json
 def create(request):
     # print(request.method)
     # print(request.POST)
-    route = json.loads(request.POST.get('route'))
+    route = request.POST.get('route')
+    print('route len:', len(route))
     routePoints = json.loads(request.POST.get('routePoints'))
     chargers = routePoints['chargers']
     startPoint = routePoints['startPoint']
@@ -58,7 +59,6 @@ def create(request):
                                        destination=destination,
                                        route=route,
                                        createUser=user_info)
-
     print('userInfo.RoadBook:', user_info.road_book)
     roadBooks = json.loads(user_info.road_book)
     roadBooks.append({

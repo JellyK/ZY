@@ -8,8 +8,8 @@ class RoadBook(models.Model):
     startPoint = models.CharField(max_length=256)
     destination = models.CharField(max_length=256)
     createUser = models.ForeignKey(UserInfo,
-                                     to_field='username',
-                                     on_delete=models.CASCADE,
-                                     max_length=150)
+                                   to_field='username',
+                                   on_delete=models.CASCADE,
+                                   max_length=150)
     createTime = models.TimeField(auto_now_add=True)
     collectedCount = models.IntegerField(default=0)
